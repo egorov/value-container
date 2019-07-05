@@ -2,23 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AssemblyName>ValueContainer</AssemblyName>
-    <PackageId>ValueContainer</PackageId>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
-  </PropertyGroup>
-
-  <PropertyGroup>
+    <PackageId>ValueContainer</PackageId>
+    <Title>Value assignment and validation container</Title>
+    <Copyright>Copyright ©2019 Sergey Egorov</Copyright>
     <Authors>Sergey Egorov</Authors>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyTitle>ValueContainer</AssemblyTitle>
     <Description>Value assignment and validation container</Description>
+    <RepositoryUrl>https://github.com/egorov/value-container.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <NuspecFile>ValueContainer.nuspec</NuspecFile>
   </PropertyGroup>
 
 </Project>
