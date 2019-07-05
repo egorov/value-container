@@ -1,5 +1,5 @@
 using System;
-using Packaging;
+using Checking;
 using Xunit;
 
 namespace Tests
@@ -50,7 +50,7 @@ namespace Tests
         Assert.Throws<InvalidOperationException>(validate);
 
       string expected = 
-        "Set the container Value with valid Packaging.ObjectValidator first!";
+        "Set the container Value with valid Checking.ObjectValidator first!";
       Assert.Equal(expected, error.Message);
       Assert.Null(this.container.get());
     }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Packaging
+namespace Checking
 {
   public interface CustomValidators : IDictionary<Type, ObjectValidator> {}
 }

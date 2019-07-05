@@ -1,24 +1,22 @@
 # Value assignment and validation container
 
-Обобщенный контейнер для упаковки значений со встроенной проверкой инициализации значений:
+Generic container for packing values with built-in value initialization check:
 
 ```csharp
   Value<Sample> sampleValue = new ValueContainer<Sample>();
 
-  // Если вызывать validate до вызова set,
-  // то будет выброшено исключение
-  // InvalidOperationException
+  // Throws InvalidOperationException here
   sampleValue.validate();
   sampleValue.set(new Sample());
 
-  // Теперь вызов validate не выбросит исключений
+  // Will not throws any exceptions now
   sampleValue.validate();
 
   Sample sample = sampleValue.get();
 
 ```
 
-Предназначен в качестве средства избавления от необходимости писать всякий раз в методах код проверки инициализационного значения? Вместо:
+Do not write value initialization check any more. Instead of:
 
 ```csharp
 
@@ -35,7 +33,7 @@
   }
 ```
 
-Можно писать так:
+Write like this:
 
 ```csharp
 
@@ -54,7 +52,7 @@
   }
 ```
 
-Или если используется контейнер внедрения зависимостей, то так:
+Or like this. If you use any dependency injection container:
 
 ```csharp
 

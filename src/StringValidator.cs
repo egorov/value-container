@@ -1,6 +1,6 @@
 using System;
 
-namespace Packaging
+namespace Checking
 {
   public class StringValidator : ObjectValidator
   {

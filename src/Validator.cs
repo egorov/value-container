@@ -1,4 +1,4 @@
-namespace Packaging
+namespace Checking
 {
   public interface Validator
   {
