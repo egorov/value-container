@@ -5,6 +5,9 @@ Generic container for packing values with built-in value initialization check:
 ```csharp
   Value<Sample> sampleValue = new ValueContainer<Sample>();
 
+  // Throws ArgumentNullException here
+  sampleValue.set(null);
+
   // Throws InvalidOperationException here
   sampleValue.validate();
   sampleValue.set(new Sample());
