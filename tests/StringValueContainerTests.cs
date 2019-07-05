@@ -25,16 +25,16 @@ namespace Tests
     public void should_set_Value()
     {
       string expected = "Hello Container!";
-      this.container.Value = expected;
+      this.container.set(expected);
       this.container.validate();
 
-      Assert.Equal(expected, this.container.Value);
+      Assert.Equal(expected, this.container.get());
     }
 
     [Fact]
     public void set_should_throw_standard_message()
     {
-      Action set = () => this.container.Value = null;
+      Action set = () => this.container.set(null);
       
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
 
@@ -46,7 +46,7 @@ namespace Tests
     [InlineData(" ")]
     public void set_should_throw(string value)
     {
-      Action set = () => this.container.Value = value;
+      Action set = () => this.container.set(value);
       
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
       string expected = 
@@ -66,7 +66,7 @@ namespace Tests
       string expected = 
         "Set the container Value with valid System.String first!";
       Assert.Equal(expected, error.Message);
-      Assert.Null(this.container.Value);
+      Assert.Null(this.container.get());
     }
 
     [Fact]

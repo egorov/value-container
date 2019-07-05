@@ -21,18 +21,19 @@ namespace Packaging
     
     private Type type;
     private T value;
-    public T Value {
-      get {
+    public T get()
+    {
         return this.value;
-      }
-      set {
+    }
+
+    public void set(T value)
+    {
         if(value == null)
           throw new ArgumentNullException(nameof(value));
 
         this.value = value;
 
         this.validateCustom();
-      }
     }
 
     public void validate()

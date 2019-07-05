@@ -2,6 +2,6 @@
 {
   public interface Consumer<T>
   {
-      T Value { set; }
+      void set(T value);
   }
 }
