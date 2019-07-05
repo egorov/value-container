@@ -4,8 +4,22 @@ namespace Packaging
 {
   public class ValueContainer<T> : Value<T>
   {
-    private static readonly ObjectValidators validators = new ObjectValidators();
+    private string message = 
+      $"Set the container Value with valid {typeof(T)} first!";
+    private CustomValidators validators;
+
+    public ValueContainer() : this(new ObjectValidators()) {}
+
+    public ValueContainer(CustomValidators validators)
+    {
+      if(validators == null)
+        throw new ArgumentNullException(nameof(validators));
+
+      this.validators = validators;
+      this.type = typeof(T);
+    }
     
+    private Type type;
     private T value;
     public T Value {
       get {
@@ -15,41 +29,37 @@ namespace Packaging
         if(value == null)
           throw new ArgumentNullException(nameof(value));
 
-        Type type = typeof(T);
-
-        if(validators.ContainsKey(type))
-        {
-          ObjectValidator validator = validators[type];
-          validator.validate(value);
-        }
-
         this.value = value;
+
+        this.validateCustom();
       }
     }
 
-    private static readonly string message = "Set the valid value first!";
     public void validate()
     {
-        if(this.value == null)
-          throw new InvalidOperationException(message);
+      if(this.value == null)
+        throw new InvalidOperationException(message);
 
-        try{
-          Type type = typeof(T);
+      try{
+        this.validateCustom();
+      }
+      catch(ArgumentNullException)
+      {
+        throw new InvalidOperationException(message);
+      }
+      catch(ArgumentException)
+      {
+        throw new InvalidOperationException(message);
+      }
+    }
 
-          if(validators.ContainsKey(type))
-          {
-            ObjectValidator validator = validators[type];
-            validator.validate(value);
-          }
-        }
-        catch(ArgumentNullException)
-        {
-          throw new InvalidOperationException(message);
-        }
-        catch(ArgumentException)
-        {
-          throw new InvalidOperationException(message);
-        }
+    private void validateCustom()
+    {
+      if(!this.validators.ContainsKey(this.type))
+        return;
+
+      ObjectValidator validator = this.validators[this.type];
+      validator.validate(this.value);
     }
   }
 }

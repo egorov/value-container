@@ -31,14 +31,28 @@ namespace Tests
       Assert.Equal(expected, this.container.Value);
     }
 
+    [Fact]
+    public void set_should_throw_standard_message()
+    {
+      Action set = () => this.container.Value = null;
+      
+      ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
+
+      Assert.Equal("Value cannot be null.\r\nParameter name: value", error.Message);
+    }
+
     [Theory]
-    [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
     public void set_should_throw(string value)
     {
       Action set = () => this.container.Value = value;
-      Assert.Throws<ArgumentNullException>(set);
+      
+      ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
+      string expected = 
+        "Value cannot be null.\r\nParameter name: value can\'t be null, empty or whitespace string!";
+
+      Assert.Equal(expected, error.Message);
     }
 
     [Fact]
@@ -46,7 +60,24 @@ namespace Tests
     {
       Action validate = () => this.container.validate();
 
-      Assert.Throws<InvalidOperationException>(validate);
+      InvalidOperationException error = 
+        Assert.Throws<InvalidOperationException>(validate);
+
+      string expected = 
+        "Set the container Value with valid System.String first!";
+      Assert.Equal(expected, error.Message);
+      Assert.Null(this.container.Value);
+    }
+
+    [Fact]
+    public void constructor_should_throw()
+    {
+      Action construct = () => new ValueContainer<string>(null);
+
+      ArgumentNullException error = Assert.Throws<ArgumentNullException>(construct);
+      string expected = "Value cannot be null.\r\nParameter name: validators";
+
+      Assert.Equal(expected, error.Message);
     }
   }
 }

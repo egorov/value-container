@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Packaging
 {
-  public class ObjectValidators : Dictionary<Type, ObjectValidator>
+  public class ObjectValidators : Dictionary<Type, ObjectValidator>, CustomValidators
   {
     public ObjectValidators()
     {
