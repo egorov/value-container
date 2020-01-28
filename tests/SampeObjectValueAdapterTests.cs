@@ -60,7 +60,7 @@ namespace Tests
       ArgumentNullException error = 
         Assert.Throws<ArgumentNullException>(construct);
       
-      Assert.Equal("Value cannot be null.\r\nParameter name: value", error.Message);      
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
 
     [Fact]
@@ -72,7 +72,7 @@ namespace Tests
       ArgumentNullException error = 
         Assert.Throws<ArgumentNullException>(construct);
       
-      Assert.Equal("Value cannot be null.\r\nParameter name: validators", error.Message);      
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
   }
 }

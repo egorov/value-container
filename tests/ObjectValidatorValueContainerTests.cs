@@ -38,7 +38,7 @@ namespace Tests
       
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
 
-      Assert.Equal("Value cannot be null.\r\nParameter name: value", error.Message);
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
 
     [Fact]

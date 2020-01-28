@@ -1,20 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFrameworks>netcoreapp2.2;netstandard2.0;netcoreapp3.1;netstandard2.1</TargetFrameworks>
     <AssemblyName>ValueContainer</AssemblyName>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <IsPackable>true</IsPackable>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <PackageId>ValueContainer</PackageId>
+    <PackageReleaseNotes>Netstandard targets have been added to package.</PackageReleaseNotes>
     <Title>Value assignment and validation container</Title>
     <Copyright>Copyright ©2019 Sergey Egorov</Copyright>
     <Authors>Sergey Egorov</Authors>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyTitle>ValueContainer</AssemblyTitle>
+    <PackageTags>value;assignment;validation</PackageTags>
+    <PackageDescription>Value assignment and validation container</PackageDescription>
     <Description>Value assignment and validation container</Description>
     <RepositoryUrl>https://github.com/egorov/value-container.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <NuspecFile>ValueContainer.nuspec</NuspecFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>

@@ -29,8 +29,10 @@ namespace Tests
     {
       Action set = () => this.consumer.set(null);
 
-      ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
-      Assert.Equal("Value cannot be null.\r\nParameter name: value", error.Message);
+      ArgumentNullException error = 
+        Assert.Throws<ArgumentNullException>(set);
+
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
   }
 

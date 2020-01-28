@@ -38,7 +38,7 @@ namespace Tests
       
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
 
-      Assert.Equal("Value cannot be null.\r\nParameter name: value", error.Message);
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
 
     [Theory]
@@ -49,10 +49,9 @@ namespace Tests
       Action set = () => this.container.set(value);
       
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(set);
-      string expected = 
-        "Value cannot be null.\r\nParameter name: value can\'t be null, empty or whitespace string!";
 
-      Assert.Equal(expected, error.Message);
+      string prefix = "Value cannot be null, empty or whitespace string!";
+      Assert.StartsWith(prefix, error.Message);
     }
 
     [Fact]
@@ -75,9 +74,8 @@ namespace Tests
       Action construct = () => new ValueContainer<string>(null);
 
       ArgumentNullException error = Assert.Throws<ArgumentNullException>(construct);
-      string expected = "Value cannot be null.\r\nParameter name: validators";
 
-      Assert.Equal(expected, error.Message);
+      Assert.StartsWith("Value cannot be null", error.Message);
     }
   }
 }
